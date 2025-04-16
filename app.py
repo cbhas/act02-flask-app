@@ -1,11 +1,9 @@
-from requests import requests
+import requests
 from flask import Flask
 
 app = Flask(__name__)
 
 @app.route('/')
-
-# Modificar la función home para que lea el archivo https://gist.githubusercontent.com/reroes/502d11c95f1f8a17d300ece914464c57/raw/872172ebb60e22e95baf8f50e2472551f49311ff/gistfile1.txtEnlaces a un sitio externo. y en función de ello presentar un tabla HTML con la información de todos las personas que tienen como inicio de ID, los número 3, 4, 5, 7 
 def home():
     url = 'https://gist.githubusercontent.com/reroes/502d11c95f1f8a17d300ece914464c57/raw/872172ebb60e22e95baf8f50e2472551f49311ff/gistfile1.txt'
     respuesta = requests.get(url)
@@ -21,6 +19,7 @@ def home():
                 'edad': partes[3]
             }
             personas.append(persona)
+    
     html = '''
     <html>
         <head>
@@ -46,4 +45,9 @@ def home():
     html += '''
             </table>
         </body>
-    </html>'''  
+    </html>'''
+    
+    return html
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
