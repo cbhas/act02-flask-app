@@ -15,7 +15,6 @@ def home():
         if linea.startswith(('3', '4', '5', '7')):
             partes = linea.split('|')
             personas.append(partes)
-    personas.sort(key=lambda x: x[0])
 
     html = '''
     <html>
