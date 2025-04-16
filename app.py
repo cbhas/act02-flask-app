@@ -8,13 +8,9 @@ app = Flask(__name__)
 def home():
     url = 'https://gist.githubusercontent.com/reroes/502d11c95f1f8a17d300ece914464c57/raw/872172ebb60e22e95baf8f50e2472551f49311ff/gistfile1.txt'
     response = requests.get(url)
-    
-    if response.status_code != 200:
-        return 'Error al obtener los datos.'
 
     personas = response.text.strip().split('\n')
     
-    # Encabezados
     tabla_html = '<table border="1">'
     tabla_html += '<tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Ciudad</th></tr>'
     
